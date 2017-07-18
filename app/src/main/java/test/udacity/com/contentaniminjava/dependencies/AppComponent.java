@@ -1,7 +1,12 @@
 package test.udacity.com.contentaniminjava.dependencies;
 
 
+import org.greenrobot.eventbus.EventBus;
+
 import dagger.Component;
+import retrofit2.Retrofit;
+import test.udacity.com.contentaniminjava.Api;
+import test.udacity.com.contentaniminjava.ListController;
 import test.udacity.com.contentaniminjava.ListFragment;
 import test.udacity.com.contentaniminjava.presenter.ListPresenter;
 
@@ -16,5 +21,11 @@ public interface AppComponent {
 
     public void inject(ListPresenter presenter);
 
-    public ListPresenter getListPresenter();
+    public void inject(ListController controller);
+
+    public Api getApi();
+
+    public EventBus getBus();
+
+    public Retrofit getAdapter();
 }

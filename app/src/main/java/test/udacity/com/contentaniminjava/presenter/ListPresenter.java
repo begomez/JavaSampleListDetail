@@ -26,6 +26,9 @@ public class ListPresenter {
     @Inject
     protected ListController controller;
 
+    @Inject
+    protected EventBus bus;
+
 
     @Inject
     public ListPresenter() {
@@ -41,11 +44,11 @@ public class ListPresenter {
     }
 
     public void start() {
-        EventBus.getDefault().register(this);
+        this.bus.register(this);
     }
 
     public void stop() {
-        EventBus.getDefault().unregister(this);
+        this.bus.unregister(this);
     }
 
     public void getData() {

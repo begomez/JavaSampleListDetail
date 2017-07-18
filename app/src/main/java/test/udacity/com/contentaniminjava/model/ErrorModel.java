@@ -8,6 +8,10 @@ public class ErrorModel {
 
     private String msg;
 
+    public ErrorModel(String msg) {
+        this.msg = msg;
+    }
+
     public ErrorModel() {
 
     }
