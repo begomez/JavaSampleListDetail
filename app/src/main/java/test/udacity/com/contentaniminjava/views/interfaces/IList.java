@@ -1,4 +1,4 @@
-package test.udacity.com.contentaniminjava;
+package test.udacity.com.contentaniminjava.views.interfaces;
 
 import java.util.List;
 

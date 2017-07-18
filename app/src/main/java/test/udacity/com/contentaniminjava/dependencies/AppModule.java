@@ -7,8 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import test.udacity.com.contentaniminjava.Api;
-import test.udacity.com.contentaniminjava.presenter.ListPresenter;
+import test.udacity.com.contentaniminjava.data.Api;
 
 
 /**

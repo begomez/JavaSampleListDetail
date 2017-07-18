@@ -1,4 +1,4 @@
-package test.udacity.com.contentaniminjava;
+package test.udacity.com.contentaniminjava.views;
 
 
 import android.content.Context;
@@ -17,7 +17,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import test.udacity.com.contentaniminjava.adapter.ListAdapter;
+import test.udacity.com.contentaniminjava.views.interfaces.IList;
+import test.udacity.com.contentaniminjava.R;
+import test.udacity.com.contentaniminjava.views.adapter.ListAdapter;
 import test.udacity.com.contentaniminjava.dependencies.AppModule;
 import test.udacity.com.contentaniminjava.dependencies.DaggerAppComponent;
 import test.udacity.com.contentaniminjava.model.PhotoModel;

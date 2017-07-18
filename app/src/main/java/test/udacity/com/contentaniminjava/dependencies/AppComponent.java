@@ -5,9 +5,9 @@ import org.greenrobot.eventbus.EventBus;
 
 import dagger.Component;
 import retrofit2.Retrofit;
-import test.udacity.com.contentaniminjava.Api;
-import test.udacity.com.contentaniminjava.ListController;
-import test.udacity.com.contentaniminjava.ListFragment;
+import test.udacity.com.contentaniminjava.data.Api;
+import test.udacity.com.contentaniminjava.controller.ListController;
+import test.udacity.com.contentaniminjava.views.ListFragment;
 import test.udacity.com.contentaniminjava.presenter.ListPresenter;
 
 

@@ -8,8 +8,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import test.udacity.com.contentaniminjava.IList;
-import test.udacity.com.contentaniminjava.ListController;
+import test.udacity.com.contentaniminjava.views.interfaces.IList;
+import test.udacity.com.contentaniminjava.controller.ListController;
 import test.udacity.com.contentaniminjava.dependencies.AppModule;
 import test.udacity.com.contentaniminjava.dependencies.DaggerAppComponent;
 import test.udacity.com.contentaniminjava.model.ErrorModel;

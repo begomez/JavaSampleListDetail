@@ -1,4 +1,4 @@
-package test.udacity.com.contentaniminjava;
+package test.udacity.com.contentaniminjava.controller;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import test.udacity.com.contentaniminjava.data.Api;
 import test.udacity.com.contentaniminjava.dependencies.AppModule;
 import test.udacity.com.contentaniminjava.dependencies.DaggerAppComponent;
 import test.udacity.com.contentaniminjava.model.ErrorModel;
