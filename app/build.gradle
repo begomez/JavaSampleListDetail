@@ -38,6 +38,7 @@ ext {
     event_version = "3.0.0"
     retro_version = "2.3.0"
     gson_version = "2.1.0"
+    picasso_version = "2.5.2"
 }
 
 dependencies {
@@ -74,6 +75,9 @@ dependencies {
 
     // GSON
     compile "com.squareup.retrofit2:converter-gson:$gson_version"
+
+    // PICASSO
+    compile "com.squareup.picasso:picasso:$picasso_version"
 
 
     //

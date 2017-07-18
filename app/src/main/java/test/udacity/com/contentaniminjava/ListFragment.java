@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import test.udacity.com.contentaniminjava.adapter.ListAdapter;
 import test.udacity.com.contentaniminjava.dependencies.AppModule;
 import test.udacity.com.contentaniminjava.dependencies.DaggerAppComponent;
 import test.udacity.com.contentaniminjava.model.PhotoModel;
@@ -109,6 +111,11 @@ public class ListFragment extends Fragment implements IList {
     }
 
     private void configureListAndAdapter(List<PhotoModel> data) {
+        ListAdapter adapter = new ListAdapter(this.getContext(), data);
+        adapter.notifyDataSetChanged();
 
+        this.list.setLayoutManager(new GridLayoutManager(this.getContext(), 2));
+        this.list.setAdapter(adapter);
+        this.list.setHasFixedSize(true);
     }
 }
