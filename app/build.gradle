@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "test.udacity.com.contentaniminjava"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    android_version = "26.+"
+    constraint_version = "1.0.2"
+    butter_version = "8.7.0"
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    // SUPPORT
+    compile "com.android.support:appcompat-v7:$android_version"
+    compile "com.android.support:recyclerview-v7:$android_version"
+    compile "com.android.support.constraint:constraint-layout:$constraint_version"
+
+    // BUTTER
+    compile "com.jakewharton:butterknife:$butter_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butter_version"
+
+    //
+
+    testCompile 'junit:junit:4.12'
+}
