@@ -15,11 +15,17 @@ import test.udacity.com.contentaniminjava.dependencies.DaggerAppComponent;
 import test.udacity.com.contentaniminjava.model.ErrorModel;
 import test.udacity.com.contentaniminjava.model.PhotoModel;
 
+
 /**
+ * List controller
+ *
  * Created by bernatgomez on 18/7/17.
  */
-
 public class ListController {
+
+    public static final String LIST_ITEM_PATH = "?image=";
+    public static final String LIST_URL = "https://unsplash.it/";
+    public static final int LIST_NUM_ITEMS = 12;
 
     @Inject
     protected EventBus bus;
@@ -27,6 +33,10 @@ public class ListController {
     @Inject
     protected Api api;
 
+
+//////////////////////////////////////////////////////////////////////////////////////
+// CONS
+//////////////////////////////////////////////////////////////////////////////////////
 
     @Inject
     public ListController() {
@@ -37,6 +47,10 @@ public class ListController {
         DaggerAppComponent.builder().appModule(new AppModule()).build().inject(this);
     }
 
+//////////////////////////////////////////////////////////////////////////////////////
+// API
+//////////////////////////////////////////////////////////////////////////////////////
+
     public void getPhotos() {
         Call<List<PhotoModel>> call = this.api.list();
 
@@ -44,7 +58,9 @@ public class ListController {
 
             @Override
             public void onResponse(Call<List<PhotoModel>> call, Response<List<PhotoModel>> response) {
-                bus.post(response.body());
+                int length = response.body().size();
+
+                bus.post(response.body().subList(length - LIST_NUM_ITEMS, length));
             }
 
             @Override

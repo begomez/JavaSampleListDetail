@@ -1,9 +1,9 @@
 package test.udacity.com.contentaniminjava.model;
 
+
 /**
  * Created by bernatgomez on 18/7/17.
  */
-
 public class PhotoModel {
 
     private String format;

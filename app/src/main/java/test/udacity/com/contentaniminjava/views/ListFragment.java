@@ -1,7 +1,6 @@
 package test.udacity.com.contentaniminjava.views;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,9 +26,9 @@ import test.udacity.com.contentaniminjava.presenter.ListPresenter;
 
 
 /**
+ * Main activity content
  * Created by bernatgomez on 18/7/17.
  */
-
 public class ListFragment extends Fragment implements IList {
 
     @BindView(R.id.list)
@@ -39,13 +38,23 @@ public class ListFragment extends Fragment implements IList {
     protected ListPresenter presenter;
 
 
+//////////////////////////////////////////////////////////////////////////////////////
+// CONS
+//////////////////////////////////////////////////////////////////////////////////////
+
     public static ListFragment newInstance() {
         return new ListFragment();
     }
 
+//////////////////////////////////////////////////////////////////////////////////////
+// LIFE
+//////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.injectionWithDagger();
     }
 
     @Nullable
@@ -53,27 +62,14 @@ public class ListFragment extends Fragment implements IList {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        View v = inflater.inflate(R.layout.fragment_list, container, false);
-
-        return v;
+        return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.bindViews();
-    }
-
-    private void bindViews() {
-        ButterKnife.bind(this, this.getView());
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        DaggerAppComponent.builder().appModule(new AppModule()).build().inject(this);
+        this.injectionWithButter();
     }
 
     @Override
@@ -98,25 +94,38 @@ public class ListFragment extends Fragment implements IList {
         this.fetchData();
     }
 
+//////////////////////////////////////////////////////////////////////////////////////
+// HELPERS
+//////////////////////////////////////////////////////////////////////////////////////
+
+    private void injectionWithButter() {
+        ButterKnife.bind(this, this.getView());
+    }
+
+    private void injectionWithDagger() {
+        DaggerAppComponent.builder().appModule(new AppModule()).build().inject(this);
+    }
+
     private void fetchData() {
         this.presenter.getData();
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
+//////////////////////////////////////////////////////////////////////////////////////
+// IMPL
+//////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onDataReceived(List<PhotoModel> data) {
-        this.configureListAndAdapter(data);
+        this.createAdapterAndConfigureList(data);
     }
 
-    private void configureListAndAdapter(List<PhotoModel> data) {
+    private void createAdapterAndConfigureList(List<PhotoModel> data) {
+        final int SPAN = 2;
+
         ListAdapter adapter = new ListAdapter(this.getContext(), data);
         adapter.notifyDataSetChanged();
 
-        this.list.setLayoutManager(new GridLayoutManager(this.getContext(), 2));
+        this.list.setLayoutManager(new GridLayoutManager(this.getContext(), SPAN));
         this.list.setAdapter(adapter);
         this.list.setHasFixedSize(true);
     }

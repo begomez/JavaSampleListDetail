@@ -1,19 +1,15 @@
 package test.udacity.com.contentaniminjava.model;
 
+
 /**
  * Created by bernatgomez on 18/7/17.
  */
-
 public class ErrorModel {
 
     private String msg;
 
     public ErrorModel(String msg) {
         this.msg = msg;
-    }
-
-    public ErrorModel() {
-
     }
 
     public String getMsg() {
@@ -23,6 +19,4 @@ public class ErrorModel {
     public void setMsg(String msg) {
         this.msg = msg;
     }
-
-
 }

@@ -1,5 +1,6 @@
 package test.udacity.com.contentaniminjava.views.adapter;
 
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,15 +14,17 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import test.udacity.com.contentaniminjava.data.Api;
+import test.udacity.com.contentaniminjava.controller.ListController;
 import test.udacity.com.contentaniminjava.R;
 import test.udacity.com.contentaniminjava.model.PhotoModel;
 
+
 /**
+ * List adapter
+ *
  * Created by bernatgomez on 18/7/17.
  */
-
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.Holder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListHolder> {
 
     private Context cntxt;
     private List<PhotoModel> data;
@@ -33,14 +36,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.Holder> {
     }
 
     @Override
-    public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+    public ListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v =
+            LayoutInflater
+                .from(parent.getContext()).inflate(R.layout.item_list, parent, false);
 
-        return new Holder(v);
+        return new ListHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
+    public void onBindViewHolder(ListHolder holder, int position) {
         holder.bind(this.data.get(position));
     }
 
@@ -49,19 +54,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.Holder> {
         return this.data != null? this.data.size() : 0;
     }
 
-    class Holder extends RecyclerView.ViewHolder {
+    /**
+     * List item holder
+     */
+    class ListHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.photo)
         protected ImageView img;
 
 
-        public Holder(View itemView) {
+        public ListHolder(View itemView) {
             super(itemView);
 
-            this.bindViews();
+            this.injectionWithButter();
         }
 
-        private void bindViews() {
+        private void injectionWithButter() {
             ButterKnife.bind(this, this.itemView);
         }
 
@@ -70,7 +78,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.Holder> {
         }
 
         private String getUrl(PhotoModel photo) {
-            return Api.LIST_URL + this.itemView.getContext().getResources().getDisplayMetrics().widthPixels + Api.LIST_ITEM_PATH + photo.getId();
+            return ListController.LIST_URL + this.itemView.getContext().getResources().getDisplayMetrics().widthPixels + ListController.LIST_ITEM_PATH + photo.getId();
         }
     }
 }

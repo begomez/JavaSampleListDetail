@@ -3,10 +3,13 @@ package test.udacity.com.contentaniminjava.dependencies;
 
 import org.greenrobot.eventbus.EventBus;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import test.udacity.com.contentaniminjava.controller.ListController;
 import test.udacity.com.contentaniminjava.data.Api;
 
 
@@ -18,11 +21,11 @@ public class AppModule {
 
     @Provides
     public Retrofit getAdapter() {
-        Retrofit adapter;
-
-        adapter = new Retrofit.Builder().baseUrl(Api.LIST_URL).addConverterFactory(GsonConverterFactory.create()).build();
-
-        return adapter;
+        return
+            new Retrofit.Builder()
+                .baseUrl(ListController.LIST_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                    .build();
     }
 
     @Provides

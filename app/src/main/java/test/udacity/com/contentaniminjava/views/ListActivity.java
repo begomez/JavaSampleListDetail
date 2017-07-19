@@ -9,7 +9,14 @@ import android.os.Bundle;
 import test.udacity.com.contentaniminjava.R;
 
 
+/**
+ * Main activity
+ */
 public class ListActivity extends AppCompatActivity {
+
+//////////////////////////////////////////////////////////////////////////////////////
+// LIFE
+//////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +28,10 @@ public class ListActivity extends AppCompatActivity {
             this.launchContentFragment();
         }
     }
+
+//////////////////////////////////////////////////////////////////////////////////////
+// HELPERS
+//////////////////////////////////////////////////////////////////////////////////////
 
     private void launchContentFragment() {
         FragmentManager mgr = this.getSupportFragmentManager();

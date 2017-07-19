@@ -1,5 +1,8 @@
 package test.udacity.com.contentaniminjava.presenter;
 
+
+import android.util.Log;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -15,11 +18,15 @@ import test.udacity.com.contentaniminjava.dependencies.DaggerAppComponent;
 import test.udacity.com.contentaniminjava.model.ErrorModel;
 import test.udacity.com.contentaniminjava.model.PhotoModel;
 
+
 /**
+ * List presenter
+ *
  * Created by bernatgomez on 18/7/17.
  */
-
 public class ListPresenter {
+
+    private static final String TAG = ListPresenter.class.getSimpleName();
 
     private IList view;
 
@@ -30,14 +37,22 @@ public class ListPresenter {
     protected EventBus bus;
 
 
+//////////////////////////////////////////////////////////////////////////////////////
+// CONS
+//////////////////////////////////////////////////////////////////////////////////////
+
     @Inject
     public ListPresenter() {
-        this.init();
+        this.injectionWithDagger();
     }
 
-    private void init() {
+    private void injectionWithDagger() {
         DaggerAppComponent.builder().appModule(new AppModule()).build().inject(this);
     }
+
+//////////////////////////////////////////////////////////////////////////////////////
+// API
+//////////////////////////////////////////////////////////////////////////////////////
 
     public void bindView(IList view) {
         this.view = view;
@@ -55,6 +70,10 @@ public class ListPresenter {
         this.controller.getPhotos();
     }
 
+//////////////////////////////////////////////////////////////////////////////////////
+// SUBS
+//////////////////////////////////////////////////////////////////////////////////////
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onListSuccess(List<PhotoModel> data) {
         this.view.onDataReceived(data);
@@ -62,6 +81,7 @@ public class ListPresenter {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onListError(ErrorModel error) {
-
+        //TODO:
+        Log.e(TAG, error.getMsg());
     }
 }
