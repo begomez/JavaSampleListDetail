@@ -48,6 +48,7 @@ dependencies {
     })
 
     // SUPPORT
+    compile "com.android.support:design:$android_version"
     compile "com.android.support:appcompat-v7:$android_version"
     compile "com.android.support:recyclerview-v7:$android_version"
     compile "com.android.support.constraint:constraint-layout:$constraint_version"

@@ -67,6 +67,8 @@ public class ListPresenter {
     }
 
     public void getData() {
+        this.view.showLoading();
+
         this.controller.getPhotos();
     }
 
@@ -76,11 +78,15 @@ public class ListPresenter {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onListSuccess(List<PhotoModel> data) {
+        this.view.hideLoading();
+
         this.view.onDataReceived(data);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onListError(ErrorModel error) {
+        this.view.hideLoading();
+
         //TODO:
         Log.e(TAG, error.getMsg());
     }

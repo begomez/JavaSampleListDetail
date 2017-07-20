@@ -1,10 +1,12 @@
 package test.udacity.com.contentaniminjava.model;
 
 
+import java.io.Serializable;
+
 /**
  * Created by bernatgomez on 18/7/17.
  */
-public class ErrorModel {
+public class ErrorModel implements Serializable {
 
     private String msg;
 

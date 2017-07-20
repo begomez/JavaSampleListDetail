@@ -10,5 +10,9 @@ import test.udacity.com.contentaniminjava.model.PhotoModel;
  */
 public interface IList {
 
+    public void showLoading();
+
+    public void hideLoading();
+
     public void onDataReceived(List<PhotoModel> data);
 }

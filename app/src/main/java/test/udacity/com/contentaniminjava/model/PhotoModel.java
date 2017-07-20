@@ -1,18 +1,21 @@
 package test.udacity.com.contentaniminjava.model;
 
 
+import java.io.Serializable;
+
 /**
  * Created by bernatgomez on 18/7/17.
  */
-public class PhotoModel {
+public class PhotoModel implements Serializable {
 
     private String format;
     private int width;
     private int height;
     private String filename;
     private long id;
+    private String author;
     private String author_url;
-    private String authot_post;
+    private String author_post;
 
     public PhotoModel() {
 
@@ -58,6 +61,14 @@ public class PhotoModel {
         this.id = id;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getAuthor_url() {
         return author_url;
     }
@@ -66,11 +77,11 @@ public class PhotoModel {
         this.author_url = author_url;
     }
 
-    public String getAuthot_post() {
-        return authot_post;
+    public String getAuthor_post() {
+        return author_post;
     }
 
-    public void setAuthot_post(String authot_post) {
-        this.authot_post = authot_post;
+    public void setAuthor_post(String author_post) {
+        this.author_post = author_post;
     }
 }

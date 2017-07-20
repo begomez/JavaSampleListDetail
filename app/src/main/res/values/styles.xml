@@ -6,6 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <!-- 2 apply transition to activity -->
+    <style name="AppTheme.List">
+        <item name="android:windowExitTransition">@transition/grid_exit</item>
     </style>
 
 </resources>
