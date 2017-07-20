@@ -160,7 +160,7 @@ public class ListFragment extends Fragment implements IList, OnItemClick {
             public int getSpanSize(int position) {
                 int span = 1;
 
-                switch (position % 3) {
+                switch (position % 6) {
                     case 0:
                         span = 3;
                         break;
@@ -170,8 +170,14 @@ public class ListFragment extends Fragment implements IList, OnItemClick {
                     case 2:
                         span = 1;
                         break;
-                    default:
-                        span = 0;
+                    case 3:
+                        span = 1;
+                        break;
+                    case 4:
+                        span = 2;
+                        break;
+                    case 5:
+                        span = 3;
                         break;
                 }
 
