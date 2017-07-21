@@ -15,14 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import test.udacity.com.contentaniminjava.controller.ListController;
-import test.udacity.com.contentaniminjava.views.decorator.ItemDecorator;
+import test.udacity.com.contentaniminjava.views.decorator.GridDecoration;
 import test.udacity.com.contentaniminjava.views.interfaces.IList;
 import test.udacity.com.contentaniminjava.R;
 import test.udacity.com.contentaniminjava.views.adapter.ListAdapter;
@@ -102,7 +101,7 @@ public class ListFragment extends Fragment implements IList, OnItemClick {
     public void onResume() {
         super.onResume();
 
-        if (mustFetchData()) {
+        if (this.mustFetchData()) {
             this.fetchData();
         }
     }
@@ -186,7 +185,7 @@ public class ListFragment extends Fragment implements IList, OnItemClick {
         });
 
         this.list.setLayoutManager(gridMgr);
-        this.list.addItemDecoration(new ItemDecorator(this.getResources().getInteger(R.integer.item_sep)));
+        this.list.addItemDecoration(new GridDecoration(this.getResources().getInteger(R.integer.item_sep)));
         this.list.setHasFixedSize(true);
     }
 
@@ -206,7 +205,6 @@ public class ListFragment extends Fragment implements IList, OnItemClick {
         this.loading.setVisibility(View.INVISIBLE);
 
     }
-
 
     @Override
     public void onClick(PhotoModel data) {
@@ -228,5 +226,4 @@ public class ListFragment extends Fragment implements IList, OnItemClick {
     private String getUrl(PhotoModel photo) {
         return ListController.LIST_URL + this.getView().getContext().getResources().getDisplayMetrics().widthPixels + ListController.LIST_ITEM_PATH + photo.getId();
     }
-
 }

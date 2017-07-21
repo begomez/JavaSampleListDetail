@@ -10,16 +10,18 @@ import android.view.View;
  *
  * Created by bernatgomez on 20/7/17.
  */
-public class ItemDecorator extends RecyclerView.ItemDecoration {
+public class GridDecoration extends RecyclerView.ItemDecoration {
+
     private int sep;
 
-    public ItemDecorator(int sep) {
+
+    public GridDecoration(int sep) {
         this.sep = sep;
     }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        //super.getItemOffsets(outRect, view, parent, state);
+        super.getItemOffsets(outRect, view, parent, state);
 
         outRect.left = this.sep;
         outRect.right = this.sep;

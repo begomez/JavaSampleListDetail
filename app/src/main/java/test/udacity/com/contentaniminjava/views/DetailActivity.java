@@ -1,12 +1,17 @@
 package test.udacity.com.contentaniminjava.views;
 
+
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +22,10 @@ import butterknife.ButterKnife;
 import test.udacity.com.contentaniminjava.R;
 import test.udacity.com.contentaniminjava.model.PhotoModel;
 
+
+/**
+ * Detail screen
+ */
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_PHOTO = "extra_photo";
@@ -42,6 +51,8 @@ public class DetailActivity extends AppCompatActivity {
         this.injectionWithButter();
 
         this.setValues();
+
+        this.configAnimations();
     }
 
     private void configActionBar() {
@@ -83,5 +94,22 @@ public class DetailActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void configAnimations() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            this.animateText();
+        }
+    }
+
+
+    private void animateText() {
+        Slide slide = new Slide(Gravity.BOTTOM);
+
+        slide.addTarget(R.id.content);
+        slide.setDuration(this.getResources().getInteger(R.integer.anim_duration));
+        slide.setInterpolator(new LinearInterpolator());
+
+        this.getWindow().setEnterTransition(slide);
     }
 }

@@ -20,7 +20,7 @@ import test.udacity.com.contentaniminjava.data.Api;
 public class AppModule {
 
     @Provides
-    public Retrofit getAdapter() {
+    public Retrofit provideAdapter() {
         return
             new Retrofit.Builder()
                 .baseUrl(ListController.LIST_URL)
@@ -29,12 +29,12 @@ public class AppModule {
     }
 
     @Provides
-    public EventBus getBus() {
+    public EventBus provideBus() {
         return EventBus.getDefault();
     }
 
     @Provides
-    public Api getApi(Retrofit adapter) {
+    public Api provideApi(Retrofit adapter) {
         return adapter.create(Api.class);
     }
 }

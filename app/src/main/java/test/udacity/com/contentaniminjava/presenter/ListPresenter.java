@@ -28,13 +28,13 @@ public class ListPresenter {
 
     private static final String TAG = ListPresenter.class.getSimpleName();
 
-    private IList view;
-
     @Inject
     protected ListController controller;
 
     @Inject
     protected EventBus bus;
+
+    private IList view;
 
 
 //////////////////////////////////////////////////////////////////////////////////////

@@ -4,5 +4,7 @@
     <dimen name="item_h">200dp</dimen>
     <dimen name="item_w">100dp</dimen>
     <dimen name="pad">16dp</dimen>
-    <dimen name="margin">16dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+
 </resources>

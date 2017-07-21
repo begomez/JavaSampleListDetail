@@ -33,6 +33,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListHolder> {
     private OnItemClick callback;
 
 
+    /**
+     *
+     * @param cntxt
+     * @param data
+     * @param callback
+     */
     public ListAdapter(Context cntxt, List<PhotoModel> data, OnItemClick callback) {
         this.cntxt = cntxt;
         this.data = data;
@@ -75,12 +81,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListHolder> {
             this.setListeners();
         }
 
-        private void setListeners() {
-            this.itemView.setOnClickListener(this);
-        }
-
         private void injectionWithButter() {
             ButterKnife.bind(this, this.itemView);
+        }
+
+        private void setListeners() {
+            this.itemView.setOnClickListener(this);
         }
 
         public void bind(PhotoModel photo) {
