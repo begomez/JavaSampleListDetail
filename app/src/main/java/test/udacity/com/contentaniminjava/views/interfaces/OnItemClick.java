@@ -1,5 +1,7 @@
 package test.udacity.com.contentaniminjava.views.interfaces;
 
+import android.view.View;
+
 import test.udacity.com.contentaniminjava.model.PhotoModel;
 
 /**
@@ -7,5 +9,6 @@ import test.udacity.com.contentaniminjava.model.PhotoModel;
  */
 
 public interface OnItemClick {
-    public void onClick(PhotoModel data);
+
+    public void onClick(PhotoModel data, View v);
 }

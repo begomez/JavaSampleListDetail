@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -207,18 +208,32 @@ public class ListFragment extends Fragment implements IList, OnItemClick {
     }
 
     @Override
-    public void onClick(PhotoModel data) {
-        this.navigate(data);
+    public void onClick(PhotoModel data, View v) {
+        this.navigateWithSharedElemAnim(data, v);
     }
 
-    private void navigate(PhotoModel data) {
+    private void navigateWithSharedElemAnim(PhotoModel data, View v) {
         Intent i = new Intent(this.getActivity(), DetailActivity.class);
 
         i.putExtra(DetailActivity.EXTRA_PHOTO, data);
         i.setAction(Intent.ACTION_VIEW);
         i.setData(Uri.parse(this.getUrl(data)));
 
-        Bundle b = ActivityOptions.makeSceneTransitionAnimation(this.getActivity()).toBundle();
+        Bundle b =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(this.getActivity(), v, v.getTransitionName()).toBundle();
+
+        this.getActivity().startActivity(i, b);
+
+    }
+
+    private void navigateWithContentAnim(PhotoModel data) {
+        Intent i = new Intent(this.getActivity(), DetailActivity.class);
+
+        i.putExtra(DetailActivity.EXTRA_PHOTO, data);
+        i.setAction(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(this.getUrl(data)));
+
+        Bundle b = ActivityOptionsCompat.makeSceneTransitionAnimation(this.getActivity()).toBundle();
 
         this.getActivity().startActivity(i, b);
     }

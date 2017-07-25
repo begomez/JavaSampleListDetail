@@ -100,7 +100,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListHolder> {
         @Override
         public void onClick(View view) {
             if (callback != null) {
-                callback.onClick(data.get(getAdapterPosition()));
+                callback.onClick(data.get(getAdapterPosition()), view);
             }
         }
     }

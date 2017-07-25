@@ -1,4 +1,6 @@
 <resources>
+    <string name="trans_name">java_transition</string>
+
     <string name="app_name">SampleJava</string>
     <string name="fake_title">Title</string>
     <string name="fake_descrip">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur orci mi, laoreet in cursus ac, malesuada sed elit. Pellentesque laoreet dolor eget rhoncus commodo. Cras lorem nulla, aliquet eu enim in, congue eleifend nunc. Donec placerat ligula justo, ac volutpat eros lacinia laoreet. Integer vel lacus vulputate, mollis erat sit amet, efficitur ipsum. Nulla pulvinar diam nec nibh pretium, sed mattis orci faucibus. Phasellus rutrum tempor lacus, et sollicitudin ipsum pharetra nec. Aenean mollis molestie lacus, sit amet malesuada tortor aliquam eu. Pellentesque ornare nibh massa, feugiat ultrices velit molestie ac. Morbi enim orci, elementum iaculis finibus eget, lacinia eget nunc. Integer eu maximus felis, a fringilla sapien. Pellentesque sed leo id erat cursus vestibulum eget at eros.

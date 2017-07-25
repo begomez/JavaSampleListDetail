@@ -22,6 +22,7 @@
         app:layout_constraintRight_toRightOf="parent"
 
         android:scaleType="centerCrop"
+        android:transitionName="@string/trans_name"
 
         tools:src="@drawable/photo4"
         />
